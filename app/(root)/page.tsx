@@ -10,14 +10,14 @@ import React from 'react'
 const page = async() => {
   const user = await getCurrentUser();
 const[userInterviews,latestInterviews]=await Promise.all([
-  await getInterviewsByUserId(user?.id),
+  await getInterviewsByUserId(user?.id!),
   await getLatestInterviews({userId:user?.id!})
 ]);
 
   // const userInterviews = await getInterviewsByUserId(user?.id);
   // const latestInterviews = await getLatestInterviews({userId:user?.id!});
-  const hasPastInterviews = userInterviews?.length > 0;
-  const hasUpcomingInterviews = latestInterviews?.length>0;
+  const hasPastInterviews = userInterviews?.length! > 0;
+  const hasUpcomingInterviews = latestInterviews?.length!>0;
   return (
     <>
     <section className="card-cta">
